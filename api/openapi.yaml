@@ -1,0 +1,69 @@
+openapi: 3.1.0
+info:
+  termsOfService: http://dynamicdns.pro/terms-of-service
+  title: Dynamicdns.pro
+  version: 0.0.1
+servers:
+- url: http://dynamicdns.pro/api
+security:
+- http: []
+paths:
+  /update/{subdomain}:
+    post:
+      operationId: updateip
+      parameters:
+      - explode: false
+        in: path
+        name: subdomain
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/updateip_200_response'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/updateip_403_response'
+          description: An error
+      summary: update the ip address with the connecting ip address
+      tags:
+      - Subdomain
+components:
+  schemas:
+    updateip_403_response:
+      example:
+        message: ""
+      properties:
+        message:
+          description: Error overview.
+          example: ""
+          type: string
+      required:
+      - message
+    updateip_200_response:
+      example:
+        message: Record updated
+      properties:
+        message:
+          example: Record updated
+          type: string
+      required:
+      - message
+  securitySchemes:
+    http:
+      bearerFormat: ""
+      scheme: bearer
+      type: http
+
