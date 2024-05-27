@@ -27,6 +27,28 @@ namespace dynamicdns.api.Api
     {
         #region Synchronous Operations
         /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="dynamicdns.api.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subdomain"></param>
+        /// <param name="updateRequest"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>Update200Response</returns>
+        Update200Response Update(string subdomain, UpdateRequest? updateRequest = default(UpdateRequest?), int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="dynamicdns.api.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subdomain"></param>
+        /// <param name="updateRequest"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of Update200Response</returns>
+        ApiResponse<Update200Response> UpdateWithHttpInfo(string subdomain, UpdateRequest? updateRequest = default(UpdateRequest?), int operationIndex = 0);
+        /// <summary>
         /// update the ip address with the connecting ip address
         /// </summary>
         /// <exception cref="dynamicdns.api.Client.ApiException">Thrown when fails to make API call</exception>
@@ -57,6 +79,33 @@ namespace dynamicdns.api.Api
     internal interface ISubdomainApiAsync : IApiAccessor
     {
         #region Asynchronous Operations
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="dynamicdns.api.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subdomain"></param>
+        /// <param name="updateRequest"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of Update200Response</returns>
+        System.Threading.Tasks.Task<Update200Response> UpdateAsync(string subdomain, UpdateRequest? updateRequest = default(UpdateRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="dynamicdns.api.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subdomain"></param>
+        /// <param name="updateRequest"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (Update200Response)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Update200Response>> UpdateWithHttpInfoAsync(string subdomain, UpdateRequest? updateRequest = default(UpdateRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// update the ip address with the connecting ip address
         /// </summary>
@@ -202,6 +251,170 @@ namespace dynamicdns.api.Api
                 return _exceptionFactory;
             }
             set { _exceptionFactory = value; }
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="dynamicdns.api.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subdomain"></param>
+        /// <param name="updateRequest"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>Update200Response</returns>
+        public Update200Response Update(string subdomain, UpdateRequest? updateRequest = default(UpdateRequest?), int operationIndex = 0)
+        {
+            dynamicdns.api.Client.ApiResponse<Update200Response> localVarResponse = UpdateWithHttpInfo(subdomain, updateRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="dynamicdns.api.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subdomain"></param>
+        /// <param name="updateRequest"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of Update200Response</returns>
+        public dynamicdns.api.Client.ApiResponse<Update200Response> UpdateWithHttpInfo(string subdomain, UpdateRequest? updateRequest = default(UpdateRequest?), int operationIndex = 0)
+        {
+            // verify the required parameter 'subdomain' is set
+            if (subdomain == null)
+            {
+                throw new dynamicdns.api.Client.ApiException(400, "Missing required parameter 'subdomain' when calling SubdomainApi->Update");
+            }
+
+            dynamicdns.api.Client.RequestOptions localVarRequestOptions = new dynamicdns.api.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = dynamicdns.api.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = dynamicdns.api.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("subdomain", dynamicdns.api.Client.ClientUtils.ParameterToString(subdomain)); // path parameter
+            localVarRequestOptions.Data = updateRequest;
+
+            localVarRequestOptions.Operation = "SubdomainApi.Update";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (http) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<Update200Response>("/update/{subdomain}/record", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("Update", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="dynamicdns.api.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subdomain"></param>
+        /// <param name="updateRequest"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of Update200Response</returns>
+        public async System.Threading.Tasks.Task<Update200Response> UpdateAsync(string subdomain, UpdateRequest? updateRequest = default(UpdateRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            dynamicdns.api.Client.ApiResponse<Update200Response> localVarResponse = await UpdateWithHttpInfoAsync(subdomain, updateRequest, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="dynamicdns.api.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subdomain"></param>
+        /// <param name="updateRequest"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (Update200Response)</returns>
+        public async System.Threading.Tasks.Task<dynamicdns.api.Client.ApiResponse<Update200Response>> UpdateWithHttpInfoAsync(string subdomain, UpdateRequest? updateRequest = default(UpdateRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'subdomain' is set
+            if (subdomain == null)
+            {
+                throw new dynamicdns.api.Client.ApiException(400, "Missing required parameter 'subdomain' when calling SubdomainApi->Update");
+            }
+
+
+            dynamicdns.api.Client.RequestOptions localVarRequestOptions = new dynamicdns.api.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = dynamicdns.api.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = dynamicdns.api.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("subdomain", dynamicdns.api.Client.ClientUtils.ParameterToString(subdomain)); // path parameter
+            localVarRequestOptions.Data = updateRequest;
+
+            localVarRequestOptions.Operation = "SubdomainApi.Update";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (http) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<Update200Response>("/update/{subdomain}/record", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("Update", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
         }
 
         /// <summary>

@@ -1,4 +1,4 @@
-# dynamicdns.api.Model.Updateip200Response
+# dynamicdns.api.Model.Updateip200ResponseAnyOf
 
 ## Properties
 

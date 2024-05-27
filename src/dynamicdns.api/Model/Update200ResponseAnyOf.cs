@@ -26,35 +26,34 @@ using OpenAPIDateConverter = dynamicdns.api.Client.OpenAPIDateConverter;
 namespace dynamicdns.api.Model
 {
     /// <summary>
-    /// Updateip403Response
+    /// Update200ResponseAnyOf
     /// </summary>
-    [DataContract(Name = "updateip_403_response")]
-    internal partial class Updateip403Response : IValidatableObject
+    [DataContract(Name = "update_200_response_anyOf")]
+    internal partial class Update200ResponseAnyOf : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Updateip403Response" /> class.
+        /// Initializes a new instance of the <see cref="Update200ResponseAnyOf" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected Updateip403Response() { }
+        protected Update200ResponseAnyOf() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="Updateip403Response" /> class.
+        /// Initializes a new instance of the <see cref="Update200ResponseAnyOf" /> class.
         /// </summary>
-        /// <param name="message">Error overview. (required).</param>
-        public Updateip403Response(string message = default(string))
+        /// <param name="message">message (required).</param>
+        public Update200ResponseAnyOf(string message = default(string))
         {
             // to ensure "message" is required (not null)
             if (message == null)
             {
-                throw new ArgumentNullException("message is a required property for Updateip403Response and cannot be null");
+                throw new ArgumentNullException("message is a required property for Update200ResponseAnyOf and cannot be null");
             }
             this.Message = message;
         }
 
         /// <summary>
-        /// Error overview.
+        /// Gets or Sets Message
         /// </summary>
-        /// <value>Error overview.</value>
-        /// <example>You are not allowed to update this record</example>
+        /// <example>Record updated</example>
         [DataMember(Name = "message", IsRequired = true, EmitDefaultValue = true)]
         public string Message { get; set; }
 
@@ -65,7 +64,7 @@ namespace dynamicdns.api.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class Updateip403Response {\n");
+            sb.Append("class Update200ResponseAnyOf {\n");
             sb.Append("  Message: ").Append(Message).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

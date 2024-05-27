@@ -26,37 +26,33 @@ using OpenAPIDateConverter = dynamicdns.api.Client.OpenAPIDateConverter;
 namespace dynamicdns.api.Model
 {
     /// <summary>
-    /// Updateip403Response
+    /// UpdateRequest
     /// </summary>
-    [DataContract(Name = "updateip_403_response")]
-    internal partial class Updateip403Response : IValidatableObject
+    [DataContract(Name = "update_request")]
+    internal partial class UpdateRequest : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Updateip403Response" /> class.
+        /// Initializes a new instance of the <see cref="UpdateRequest" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected Updateip403Response() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Updateip403Response" /> class.
-        /// </summary>
-        /// <param name="message">Error overview. (required).</param>
-        public Updateip403Response(string message = default(string))
+        /// <param name="ipv4">ipv4.</param>
+        /// <param name="ipv6">ipv6.</param>
+        public UpdateRequest(string ipv4 = default(string), string ipv6 = default(string))
         {
-            // to ensure "message" is required (not null)
-            if (message == null)
-            {
-                throw new ArgumentNullException("message is a required property for Updateip403Response and cannot be null");
-            }
-            this.Message = message;
+            this.Ipv4 = ipv4;
+            this.Ipv6 = ipv6;
         }
 
         /// <summary>
-        /// Error overview.
+        /// Gets or Sets Ipv4
         /// </summary>
-        /// <value>Error overview.</value>
-        /// <example>You are not allowed to update this record</example>
-        [DataMember(Name = "message", IsRequired = true, EmitDefaultValue = true)]
-        public string Message { get; set; }
+        [DataMember(Name = "ipv4", EmitDefaultValue = true)]
+        public string Ipv4 { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Ipv6
+        /// </summary>
+        [DataMember(Name = "ipv6", EmitDefaultValue = true)]
+        public string Ipv6 { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -65,8 +61,9 @@ namespace dynamicdns.api.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class Updateip403Response {\n");
-            sb.Append("  Message: ").Append(Message).Append("\n");
+            sb.Append("class UpdateRequest {\n");
+            sb.Append("  Ipv4: ").Append(Ipv4).Append("\n");
+            sb.Append("  Ipv6: ").Append(Ipv6).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

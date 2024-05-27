@@ -85,23 +85,22 @@ namespace Example
         {
 
             Configuration config = new Configuration();
-            config.BasePath = "http://dynamicdns.pro/api";
+            config.BasePath = "https://dynamicdns.pro/api";
             // Configure Bearer token for authorization: http
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new SubdomainApi(config);
             var subdomain = "subdomain_example";  // string | 
-            var body = null;  // Object? |  (optional) 
+            var updateRequest = new UpdateRequest?(); // UpdateRequest? |  (optional) 
 
             try
             {
-                // update the ip address with the connecting ip address
-                Updateip200Response result = apiInstance.Updateip(subdomain, body);
+                Update200Response result = apiInstance.Update(subdomain, updateRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
             {
-                Debug.Print("Exception when calling SubdomainApi.Updateip: " + e.Message );
+                Debug.Print("Exception when calling SubdomainApi.Update: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -114,17 +113,25 @@ namespace Example
 <a id="documentation-for-api-endpoints"></a>
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://dynamicdns.pro/api*
+All URIs are relative to *https://dynamicdns.pro/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*SubdomainApi* | [**Update**](docs/SubdomainApi.md#update) | **POST** /update/{subdomain}/record | 
 *SubdomainApi* | [**Updateip**](docs/SubdomainApi.md#updateip) | **POST** /update/{subdomain} | update the ip address with the connecting ip address
 
 
 <a id="documentation-for-models"></a>
 ## Documentation for Models
 
+ - [Model.Update200Response](docs/Update200Response.md)
+ - [Model.Update200ResponseAnyOf](docs/Update200ResponseAnyOf.md)
+ - [Model.Update400Response](docs/Update400Response.md)
+ - [Model.Update403Response](docs/Update403Response.md)
+ - [Model.UpdateRequest](docs/UpdateRequest.md)
  - [Model.Updateip200Response](docs/Updateip200Response.md)
+ - [Model.Updateip200ResponseAnyOf](docs/Updateip200ResponseAnyOf.md)
+ - [Model.Updateip400Response](docs/Updateip400Response.md)
  - [Model.Updateip403Response](docs/Updateip403Response.md)
 
 

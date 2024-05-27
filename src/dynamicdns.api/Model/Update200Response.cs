@@ -27,18 +27,18 @@ using System.Reflection;
 namespace dynamicdns.api.Model
 {
     /// <summary>
-    /// Updateip200Response
+    /// Update200Response
     /// </summary>
-    [JsonConverter(typeof(Updateip200ResponseJsonConverter))]
-    [DataContract(Name = "updateip_200_response")]
-    internal partial class Updateip200Response : AbstractOpenAPISchema, IValidatableObject
+    [JsonConverter(typeof(Update200ResponseJsonConverter))]
+    [DataContract(Name = "update_200_response")]
+    internal partial class Update200Response : AbstractOpenAPISchema, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Updateip200Response" /> class
-        /// with the <see cref="Updateip200ResponseAnyOf" /> class
+        /// Initializes a new instance of the <see cref="Update200Response" /> class
+        /// with the <see cref="Update200ResponseAnyOf" /> class
         /// </summary>
-        /// <param name="actualInstance">An instance of Updateip200ResponseAnyOf.</param>
-        public Updateip200Response(Updateip200ResponseAnyOf actualInstance)
+        /// <param name="actualInstance">An instance of Update200ResponseAnyOf.</param>
+        public Update200Response(Update200ResponseAnyOf actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "anyOf";
@@ -46,11 +46,11 @@ namespace dynamicdns.api.Model
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Updateip200Response" /> class
+        /// Initializes a new instance of the <see cref="Update200Response" /> class
         /// with the <see cref="string" /> class
         /// </summary>
         /// <param name="actualInstance">An instance of string.</param>
-        public Updateip200Response(string actualInstance)
+        public Update200Response(string actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "anyOf";
@@ -71,7 +71,7 @@ namespace dynamicdns.api.Model
             }
             set
             {
-                if (value.GetType() == typeof(Updateip200ResponseAnyOf))
+                if (value.GetType() == typeof(Update200ResponseAnyOf))
                 {
                     this._actualInstance = value;
                 }
@@ -81,19 +81,19 @@ namespace dynamicdns.api.Model
                 }
                 else
                 {
-                    throw new ArgumentException("Invalid instance found. Must be the following types: Updateip200ResponseAnyOf, string");
+                    throw new ArgumentException("Invalid instance found. Must be the following types: Update200ResponseAnyOf, string");
                 }
             }
         }
 
         /// <summary>
-        /// Get the actual instance of `Updateip200ResponseAnyOf`. If the actual instance is not `Updateip200ResponseAnyOf`,
+        /// Get the actual instance of `Update200ResponseAnyOf`. If the actual instance is not `Update200ResponseAnyOf`,
         /// the InvalidClassException will be thrown
         /// </summary>
-        /// <returns>An instance of Updateip200ResponseAnyOf</returns>
-        public Updateip200ResponseAnyOf GetUpdateip200ResponseAnyOf()
+        /// <returns>An instance of Update200ResponseAnyOf</returns>
+        public Update200ResponseAnyOf GetUpdate200ResponseAnyOf()
         {
-            return (Updateip200ResponseAnyOf)this.ActualInstance;
+            return (Update200ResponseAnyOf)this.ActualInstance;
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace dynamicdns.api.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class Updateip200Response {\n");
+            sb.Append("class Update200Response {\n");
             sb.Append("  ActualInstance: ").Append(this.ActualInstance).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -125,40 +125,40 @@ namespace dynamicdns.api.Model
         /// <returns>JSON string presentation of the object</returns>
         public override string ToJson()
         {
-            return JsonConvert.SerializeObject(this.ActualInstance, Updateip200Response.SerializerSettings);
+            return JsonConvert.SerializeObject(this.ActualInstance, Update200Response.SerializerSettings);
         }
 
         /// <summary>
-        /// Converts the JSON string into an instance of Updateip200Response
+        /// Converts the JSON string into an instance of Update200Response
         /// </summary>
         /// <param name="jsonString">JSON string</param>
-        /// <returns>An instance of Updateip200Response</returns>
-        public static Updateip200Response FromJson(string jsonString)
+        /// <returns>An instance of Update200Response</returns>
+        public static Update200Response FromJson(string jsonString)
         {
-            Updateip200Response newUpdateip200Response = null;
+            Update200Response newUpdate200Response = null;
 
             if (string.IsNullOrEmpty(jsonString))
             {
-                return newUpdateip200Response;
+                return newUpdate200Response;
             }
 
             try
             {
-                newUpdateip200Response = new Updateip200Response(JsonConvert.DeserializeObject<Updateip200ResponseAnyOf>(jsonString, Updateip200Response.SerializerSettings));
+                newUpdate200Response = new Update200Response(JsonConvert.DeserializeObject<Update200ResponseAnyOf>(jsonString, Update200Response.SerializerSettings));
                 // deserialization is considered successful at this point if no exception has been thrown.
-                return newUpdateip200Response;
+                return newUpdate200Response;
             }
             catch (Exception exception)
             {
                 // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into Updateip200ResponseAnyOf: {1}", jsonString, exception.ToString()));
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into Update200ResponseAnyOf: {1}", jsonString, exception.ToString()));
             }
 
             try
             {
-                newUpdateip200Response = new Updateip200Response(JsonConvert.DeserializeObject<string>(jsonString, Updateip200Response.SerializerSettings));
+                newUpdate200Response = new Update200Response(JsonConvert.DeserializeObject<string>(jsonString, Update200Response.SerializerSettings));
                 // deserialization is considered successful at this point if no exception has been thrown.
-                return newUpdateip200Response;
+                return newUpdate200Response;
             }
             catch (Exception exception)
             {
@@ -182,9 +182,9 @@ namespace dynamicdns.api.Model
     }
 
     /// <summary>
-    /// Custom JSON converter for Updateip200Response
+    /// Custom JSON converter for Update200Response
     /// </summary>
-    public class Updateip200ResponseJsonConverter : JsonConverter
+    public class Update200ResponseJsonConverter : JsonConverter
     {
         /// <summary>
         /// To write the JSON string
@@ -194,7 +194,7 @@ namespace dynamicdns.api.Model
         /// <param name="serializer">JSON Serializer</param>
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            writer.WriteRawValue((string)(typeof(Updateip200Response).GetMethod("ToJson").Invoke(value, null)));
+            writer.WriteRawValue((string)(typeof(Update200Response).GetMethod("ToJson").Invoke(value, null)));
         }
 
         /// <summary>
@@ -210,11 +210,11 @@ namespace dynamicdns.api.Model
             switch(reader.TokenType) 
             {
                 case JsonToken.String: 
-                    return new Updateip200Response(Convert.ToString(reader.Value));
+                    return new Update200Response(Convert.ToString(reader.Value));
                 case JsonToken.StartObject:
-                    return Updateip200Response.FromJson(JObject.Load(reader).ToString(Formatting.None));
+                    return Update200Response.FromJson(JObject.Load(reader).ToString(Formatting.None));
                 case JsonToken.StartArray:
-                    return Updateip200Response.FromJson(JArray.Load(reader).ToString(Formatting.None));
+                    return Update200Response.FromJson(JArray.Load(reader).ToString(Formatting.None));
                 default:
                     return null;
             }

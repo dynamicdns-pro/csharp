@@ -26,26 +26,26 @@ using OpenAPIDateConverter = dynamicdns.api.Client.OpenAPIDateConverter;
 namespace dynamicdns.api.Model
 {
     /// <summary>
-    /// Updateip403Response
+    /// Update400Response
     /// </summary>
-    [DataContract(Name = "updateip_403_response")]
-    internal partial class Updateip403Response : IValidatableObject
+    [DataContract(Name = "update_400_response")]
+    internal partial class Update400Response : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Updateip403Response" /> class.
+        /// Initializes a new instance of the <see cref="Update400Response" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected Updateip403Response() { }
+        protected Update400Response() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="Updateip403Response" /> class.
+        /// Initializes a new instance of the <see cref="Update400Response" /> class.
         /// </summary>
         /// <param name="message">Error overview. (required).</param>
-        public Updateip403Response(string message = default(string))
+        public Update400Response(string message = default(string))
         {
             // to ensure "message" is required (not null)
             if (message == null)
             {
-                throw new ArgumentNullException("message is a required property for Updateip403Response and cannot be null");
+                throw new ArgumentNullException("message is a required property for Update400Response and cannot be null");
             }
             this.Message = message;
         }
@@ -54,7 +54,7 @@ namespace dynamicdns.api.Model
         /// Error overview.
         /// </summary>
         /// <value>Error overview.</value>
-        /// <example>You are not allowed to update this record</example>
+        /// <example>No ip address provided</example>
         [DataMember(Name = "message", IsRequired = true, EmitDefaultValue = true)]
         public string Message { get; set; }
 
@@ -65,7 +65,7 @@ namespace dynamicdns.api.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class Updateip403Response {\n");
+            sb.Append("class Update400Response {\n");
             sb.Append("  Message: ").Append(Message).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

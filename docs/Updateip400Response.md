@@ -1,11 +1,10 @@
-# dynamicdns.api.Model.Updateip200Response
+# dynamicdns.api.Model.Updateip400Response
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Message** | **string** |  | 
-**Ip** | **string** |  | 
+**Message** | **string** | Error overview. | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

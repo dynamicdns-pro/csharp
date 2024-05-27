@@ -1,10 +1,9 @@
 openapi: 3.1.0
 info:
-  termsOfService: http://dynamicdns.pro/terms-of-service
   title: Dynamicdns.pro
   version: 0.0.1
 servers:
-- url: http://dynamicdns.pro/api
+- url: https://dynamicdns.pro/api
 security:
 - http: []
 paths:
@@ -31,28 +30,155 @@ paths:
               schema:
                 $ref: '#/components/schemas/updateip_200_response'
           description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/updateip_400_response'
+          description: An error
         "403":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/updateip_403_response'
           description: An error
+        "404":
+          $ref: '#/components/responses/ModelNotFoundException'
       summary: update the ip address with the connecting ip address
       tags:
       - Subdomain
+  /update/{subdomain}/record:
+    post:
+      operationId: update
+      parameters:
+      - explode: false
+        in: path
+        name: subdomain
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/update_request'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/update_200_response'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/update_400_response'
+          description: An error
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/update_403_response'
+          description: ""
+        "404":
+          $ref: '#/components/responses/ModelNotFoundException'
+        "422":
+          $ref: '#/components/responses/ValidationException'
+      tags:
+      - Subdomain
 components:
+  responses:
+    ModelNotFoundException:
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: Error overview.
+                type: string
+            required:
+            - message
+      description: Not found
+    ValidationException:
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                description: Errors overview.
+                type: string
+              errors:
+                additionalProperties:
+                  items:
+                    type: string
+                description: A detailed description of each field that failed validation.
+            required:
+            - errors
+            - message
+      description: Validation error
   schemas:
     updateip_403_response:
       example:
-        message: ""
+        message: You are not allowed to update this record
       properties:
         message:
           description: Error overview.
-          example: ""
+          example: You are not allowed to update this record
+          type: string
+      required:
+      - message
+    update_400_response:
+      example:
+        message: No ip address provided
+      properties:
+        message:
+          description: Error overview.
+          example: No ip address provided
+          type: string
+      required:
+      - message
+    updateip_400_response:
+      example:
+        message: Invalid ip address
+      properties:
+        message:
+          description: Error overview.
+          example: Invalid ip address
           type: string
       required:
       - message
     updateip_200_response:
+      anyOf:
+      - $ref: '#/components/schemas/updateip_200_response_anyOf'
+      - type: string
+    update_200_response:
+      anyOf:
+      - $ref: '#/components/schemas/update_200_response_anyOf'
+      - type: string
+    updateip_200_response_anyOf:
+      example:
+        ip: ip
+        message: Record updated
+      properties:
+        message:
+          example: Record updated
+          type: string
+        ip:
+          type: string
+      required:
+      - ip
+      - message
+    update_request:
+      properties:
+        ipv4:
+          nullable: true
+          type: string
+        ipv6:
+          nullable: true
+          type: string
+    update_200_response_anyOf:
       example:
         message: Record updated
       properties:
@@ -61,6 +187,10 @@ components:
           type: string
       required:
       - message
+    update_403_response:
+      anyOf:
+      - $ref: '#/components/schemas/updateip_403_response'
+      - $ref: '#/components/schemas/updateip_403_response'
   securitySchemes:
     http:
       bearerFormat: ""

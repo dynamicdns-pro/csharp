@@ -118,7 +118,7 @@ namespace dynamicdns.api.Client
         {
             Proxy = null;
             UserAgent = WebUtility.UrlEncode("OpenAPI-Generator/1.0.0/csharp");
-            BasePath = "http://dynamicdns.pro/api";
+            BasePath = "https://dynamicdns.pro/api";
             DefaultHeaders = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
             ApiKeyPrefix = new ConcurrentDictionary<string, string>();
@@ -126,7 +126,7 @@ namespace dynamicdns.api.Client
             {
                 {
                     new Dictionary<string, object> {
-                        {"url", "http://dynamicdns.pro/api"},
+                        {"url", "https://dynamicdns.pro/api"},
                         {"description", "No description provided"},
                     }
                 }
@@ -147,7 +147,7 @@ namespace dynamicdns.api.Client
             IDictionary<string, string> defaultHeaders,
             IDictionary<string, string> apiKey,
             IDictionary<string, string> apiKeyPrefix,
-            string basePath = "http://dynamicdns.pro/api") : this()
+            string basePath = "https://dynamicdns.pro/api") : this()
         {
             if (string.IsNullOrWhiteSpace(basePath))
                 throw new ArgumentException("The provided basePath is invalid.", "basePath");
