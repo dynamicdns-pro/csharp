@@ -4,8 +4,8 @@ All URIs are relative to *https://dynamicdns.pro/api*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**Update**](SubdomainApi.md#update) | **POST** /update/{subdomain}/record |  |
-| [**Updateip**](SubdomainApi.md#updateip) | **POST** /update/{subdomain} | update the ip address with the connecting ip address |
+| [**Update**](SubdomainApi.md#update) | **POST** /{subdomain}/record |  |
+| [**Updateip**](SubdomainApi.md#updateip) | **POST** /{subdomain} | update the ip address with the connecting ip address |
 
 <a id="update"></a>
 # **Update**
@@ -97,6 +97,7 @@ catch (ApiException e)
 |-------------|-------------|------------------|
 | **200** |  |  -  |
 | **400** | An error |  -  |
+| **401** |  |  -  |
 | **403** |  |  -  |
 | **404** |  |  -  |
 | **422** |  |  -  |
@@ -195,6 +196,7 @@ catch (ApiException e)
 |-------------|-------------|------------------|
 | **200** |  |  -  |
 | **400** | An error |  -  |
+| **401** |  |  -  |
 | **403** | An error |  -  |
 | **404** |  |  -  |
 

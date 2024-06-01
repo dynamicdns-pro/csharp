@@ -320,7 +320,7 @@ namespace dynamicdns.api.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<Update200Response>("/update/{subdomain}/record", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<Update200Response>("/{subdomain}/record", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("Update", localVarResponse);
@@ -403,7 +403,7 @@ namespace dynamicdns.api.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Update200Response>("/update/{subdomain}/record", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<Update200Response>("/{subdomain}/record", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -484,7 +484,7 @@ namespace dynamicdns.api.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<Updateip200Response>("/update/{subdomain}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<Updateip200Response>("/{subdomain}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("Updateip", localVarResponse);
@@ -567,7 +567,7 @@ namespace dynamicdns.api.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Updateip200Response>("/update/{subdomain}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<Updateip200Response>("/{subdomain}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

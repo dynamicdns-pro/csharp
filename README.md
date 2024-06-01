@@ -117,8 +117,8 @@ All URIs are relative to *https://dynamicdns.pro/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*SubdomainApi* | [**Update**](docs/SubdomainApi.md#update) | **POST** /update/{subdomain}/record | 
-*SubdomainApi* | [**Updateip**](docs/SubdomainApi.md#updateip) | **POST** /update/{subdomain} | update the ip address with the connecting ip address
+*SubdomainApi* | [**Update**](docs/SubdomainApi.md#update) | **POST** /{subdomain}/record | 
+*SubdomainApi* | [**Updateip**](docs/SubdomainApi.md#updateip) | **POST** /{subdomain} | update the ip address with the connecting ip address
 
 
 <a id="documentation-for-models"></a>
